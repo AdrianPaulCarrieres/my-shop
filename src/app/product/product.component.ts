@@ -11,16 +11,25 @@ export class ProductComponent {
   @Input()
   product!: Product;
 
-  @Output() hoveredEvent = new EventEmitter<string>();
+  hovered = false;
+
+  @Output() hoveringEvent = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  hovered(name: string, flag: boolean) {
+  hovering(name: string, flag: boolean) {
     let event = JSON.stringify({name: name, flag: flag});
-    this.hoveredEvent.emit(event);
+    console.log(event);
+    this.hoveringEvent.emit(event);
+
+    if(flag) {
+      this.hovered = true;
+    } else {
+      this.hovered = false;
+    }
   }
 
   addToCart(product: Product) {

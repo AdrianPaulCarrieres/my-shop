@@ -3,5 +3,5 @@
 <p>{{this.hovering}}</p>
 
 <div *ngFor="let product of products">
-    <app-product [product]="product" (hoveredEvent)='outputHovered($event)'></app-product>
+    <app-product [product]="product" (hoveringEvent)='outputHovered($event)'></app-product>
 </div>
