@@ -3,27 +3,43 @@ export interface Product {
   name: string;
   price: number;
   description: string;
+  image: string;
 }
 
 export const products = [
   {
     id: 1,
-    name: 'Phone XL',
+    name: 'AirPods',
     price: 799,
-    description: 'A large phone with one of the best screens'
+    description: 'A great airpods with one of the best airpods',
+    image: '/assets/images/airpods.png'
   },
   {
     id: 2,
-    name: 'Phone Mini',
+    name: 'iPhone 12',
     price: 699,
-    description: 'A great phone with one of the best cameras'
+    description: 'A great phone with one of the best cameras',
+    image: '/assets/images/iphone12.png'
   },
   {
     id: 3,
-    name: 'Phone Standard',
+    name: 'iPhone 14',
     price: 299,
-    description: ''
-  }
+    description: 'A great phone with one of the bestest cameras',
+    image: '/assets/images/iphone14.png'
+  },
+  {
+    id: 4,
+    name: 'Sasmsung 22',
+    price: 299,
+    image: '/assets/images/samsung22.png',
+  },
+  {
+    id: 5,
+    name: 'Sasmsung Note 10',
+    price: 299,
+    image: '/assets/images/samsungnote10.png',
+  },
 ];
 
 
