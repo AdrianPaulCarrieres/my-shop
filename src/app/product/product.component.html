@@ -1,4 +1,4 @@
-<div (mouseenter)="hovered(product.name)">
+<div (mouseenter)="hovered(product.name, true)" (mouseleave)="hovered(product.name, false)">
     <h3>
         <a [title]="product.name + ' details'">
             {{ product.name }}

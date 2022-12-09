@@ -1,7 +1,7 @@
 <div *ngIf="cart.length == 0">
     <h3>Your cart is empty</h3>
 </div>
-<div>
+<div *ngIf="cart.length != 0">
     <div class="cart-item">
         <b>Item</b>
         <b>Quantity</b>

@@ -18,8 +18,8 @@ export class ProductComponent {
   ngOnInit(): void {
   }
 
-  hovered(value: string) {
-    this.hoveredEvent.emit(value);
+  hovered(name: string, flag: boolean) {
+    this.hoveredEvent.emit(`{name: ${name}, flag: ${flag}}`);
   }
 
   addToCart(product: Product) {
