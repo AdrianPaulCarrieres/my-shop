@@ -10,8 +10,8 @@ import { Product } from '../models/product';
 export class CartComponent {
   // when components load, get cart from local storage
   cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  total = this.calculateTotal(this.cart);
  
-
   constructor() {
     //localStorage.setItem('cart', '[]');
     console.table(this.cart);
@@ -45,6 +45,8 @@ export class CartComponent {
     localStorage.setItem('cart', JSON.stringify(cart));
 
     this.cart = cart;
+
+    this.total = this.calculateTotal(this.cart);
   }
 
   removeFromCart(product: Product) {
@@ -64,6 +66,15 @@ export class CartComponent {
     localStorage.setItem('cart', JSON.stringify(cart));
 
     this.cart = cart;
+
+    this.total = this.calculateTotal(this.cart);
   }
 
+  calculateTotal(cart: any) {
+    let total = 0;
+    for (let item of cart) {
+      total += item.price * item.quantity;
+    }
+    return total;
+  }
 }
