@@ -10,14 +10,17 @@ import { products } from '../products';
 export class ProductListComponent {
   products = products;
 
-  hovered = "No component was hovered";
+  hovering = "No component is being hovered";
 
   @Output() hoveredEvent = new EventEmitter<string>();
 
   outputHovered(event: any) {
-    console.log("outputHovered");
-    this.hoveredEvent.emit(event);
-    this.hovered = "Latest hovered component: " + event;
+    event = JSON.parse(event);
+    if(event.flag) {
+      this.hovering = "Hovering " + event.name;
+    } else {
+      this.hovering = "No component is being hovered";
+    }
   }
 
   share() {

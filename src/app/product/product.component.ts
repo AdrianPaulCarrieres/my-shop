@@ -19,7 +19,8 @@ export class ProductComponent {
   }
 
   hovered(name: string, flag: boolean) {
-    this.hoveredEvent.emit(`{name: ${name}, flag: ${flag}}`);
+    let event = JSON.stringify({name: name, flag: flag});
+    this.hoveredEvent.emit(event);
   }
 
   addToCart(product: Product) {
