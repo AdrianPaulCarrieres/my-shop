@@ -22,30 +22,37 @@ export class ProductComponent {
     this.hoveredEvent.emit(value);
   }
 
+  // add product to cart as an object of productId -> quantity
+
+  // add to cart
   addToCart(product: Product) {
     let cart = [];
-    if (localStorage.getItem('cart') !== null) {
-      cart = JSON.parse(localStorage.getItem('cart') || '{}');
-      cart = [product, ...cart];
-    } else {
-      cart = [product];
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
+    cart = JSON.parse(localStorage.getItem('cart') || `{ ${product.id} : ${0} }`);
+    let quantity = cart[product.id] || 0;
+    quantity += 1;
+
+    cart[product.id] = quantity;
+
     console.table(cart);
+
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 
   // remove from cart
   removeFromCart(product: Product) {
     let cart = [];
-    if (localStorage.getItem('cart') !== null) {
-      cart = JSON.parse(localStorage.getItem('cart') || '{}');
+    cart = JSON.parse(localStorage.getItem('cart') || `{ ${product.id} : ${0} }`);
+    let quantity = cart[product.id] || 0;
+    quantity -= 1;
 
-      const index = cart.indexOf(product);
-
-      cart.splice(index, 1);
+    if (quantity <= 0) {
+      delete cart[product.id]
+    } else {
+      cart[product.id] = quantity;
     }
-    localStorage.setItem('cart', JSON.stringify(cart));
 
     console.table(cart);
+
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 }
