@@ -8,6 +8,11 @@
     <img src="{{product.image}}" alt="{{product.name}}" />
 
     <p *ngIf="product.description">
-        Description: {{ product.description }}
+        {{ product.description }}
     </p>
+
+    <button (click)="addToCart(product)">Add to cart</button>
+
+    <button (click)="removeFromCart(product)">Remove from cart</button>
 </div>
+
