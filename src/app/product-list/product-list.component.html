@@ -1,23 +1,7 @@
 <h2>Products</h2>
 
+<p>{{this.hovered}}</p>
+
 <div *ngFor="let product of products">
-    <div>
-        <h3>
-            <a [title]="product.name + ' details'">
-                {{ product.name }}
-            </a>
-        </h3>
-
-        <img src="{{product.image}}" alt="{{product.name}}" />
-
-        <p *ngIf="product.description">
-            Description: {{ product.description }}
-        </p>
-
-        <button type="button" (click)="share()">
-            Share
-        </button>
-    </div>
+    <app-product [product]="product" (hoveredEvent)='outputHovered($event)'></app-product>
 </div>
-
-Create a list of products with their description (if present) and their image

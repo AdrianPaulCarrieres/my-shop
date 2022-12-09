@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../models/product';
 
 @Component({
@@ -11,8 +11,14 @@ export class ProductComponent {
   @Input()
   product!: Product;
 
+  @Output() hoveredEvent = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  hovered(value: string) {
+    this.hoveredEvent.emit(value);
   }
 }
