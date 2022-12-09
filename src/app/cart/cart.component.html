@@ -1,12 +1,15 @@
-represent the cart as a grid with the quantities
-in the first column and the product names in the second column.
-The total price is displayed in the last row.
-<div class="cart-item" *ngFor="let item of items">
-    <span>{{item.quantity}}</span>
-    <span>{{item.name}}</span>
+<div class="cart-item">
+    <b>Item</b>
+    <b>Quantity</b>
+    <b>Unit Price</b>
+    <b>Price</b>
+    <b>Action</b>
+</div>
+<div class="cart-item" *ngFor="let id of (keys)">
+    <span>{{id}}</span>
+    <span>{{items[id]}}</span>
 </div>
 <div class="cart-row">
     <span>Total</span>
-    <span>{{items.totalPrice | currency}}</span>
 </div>
 
