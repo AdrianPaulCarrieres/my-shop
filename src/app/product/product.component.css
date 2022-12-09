@@ -1,0 +1,8 @@
+.buttonNotHovered{
+    background-color: blue;
+    color: white;
+}
+.buttonHovered{
+    background-color: white;
+    color: blue;
+}

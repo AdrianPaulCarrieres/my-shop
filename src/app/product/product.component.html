@@ -1,4 +1,4 @@
-<div (mouseenter)="hovered(product.name)">
+<div (mouseenter)="hovering(product.name, true)" (mouseleave)="hovering(product.name, false)">
     <h3>
         <a [title]="product.name + ' details'">
             {{ product.name }}
@@ -11,8 +11,8 @@
         {{ product.description }}
     </p>
 
-    <button (click)="addToCart(product)">Add to cart</button>
+    <button [ngClass]="{'buttonNotHovered': hovered === false, 'buttonHovered' : hovered === true }"
+        (click)="addToCart(product)">Add to cart</button>
 
-    <button (click)="removeFromCart(product)">Remove from cart</button>
+    <button [ngClass]="{'buttonNotHovered': hovered === false, 'buttonHovered' : hovered === true }" (click)="removeFromCart(product)">Remove from cart</button>
 </div>
-

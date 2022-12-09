@@ -11,38 +11,60 @@ export class ProductComponent {
   @Input()
   product!: Product;
 
-  @Output() hoveredEvent = new EventEmitter<string>();
+  hovered = false;
+
+  @Output() hoveringEvent = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  hovered(value: string) {
-    this.hoveredEvent.emit(value);
+  hovering(name: string, flag: boolean) {
+    let event = JSON.stringify({name: name, flag: flag});
+    this.hoveringEvent.emit(event);
+
+    if(flag) {
+      this.hovered = true;
+    } else {
+      this.hovered = false;
+    }
   }
 
-  // add a set of functions to add or remove product to cart in the localStorage
-  // add to cart
   addToCart(product: Product) {
     let cart = [];
-    if (localStorage.getItem('cart') !== null) {
-      cart = JSON.parse(localStorage.getItem('cart') || '{}');
-      cart = [product, ...cart];
+
+    cart = JSON.parse(localStorage.getItem('cart') || `[]`);
+
+    let item = cart.find((item: any) => item.id === product.id);
+    if (item) {
+      item.name = product.name;
+      item.quantity += 1;
+      item.price = product.price;
     } else {
-      cart = [product];
+      cart.push({
+        id: product.id,
+        name: product.name,
+        quantity: 1,
+        price: product.price,
+      });
     }
+
     localStorage.setItem('cart', JSON.stringify(cart));
-    console.table(cart);
   }
 
-  // remove from cart
   removeFromCart(product: Product) {
     let cart = [];
-    if (localStorage.getItem('cart') !== null) {
-      cart = JSON.parse(localStorage.getItem('cart') || '{}');
-      cart = cart.filter((p: Product) => p.id !== product.id);
+    cart = JSON.parse(localStorage.getItem('cart') || `[]`);
+
+    let item = cart.find((item: any) => item.id === product.id);
+    if (item) {
+      item.quantity -= 1;
+      if (item.quantity <= 0) {
+        cart = cart.filter((item: any) => item.id !== product.id);
+      }
     }
+
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 }
