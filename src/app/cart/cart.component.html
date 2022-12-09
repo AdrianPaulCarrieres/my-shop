@@ -5,9 +5,14 @@
     <b>Price</b>
     <b>Action</b>
 </div>
-<div class="cart-item" *ngFor="let id of (keys)">
-    <span>{{id}}</span>
-    <span>{{items[id]}}</span>
+<div class="cart-item" *ngFor="let item of cart">
+    <span>{{item.name}}</span>
+    <span>{{item.quantity}}</span>
+    <span>{{item.price}}</span>
+    <span>{{item.price * item.quantity}}</span>
+    <button (click)="addToCart(item)">+</button>
+    <button (click)="removeFromCart(item)">-</button>
+
 </div>
 <div class="cart-row">
     <span>Total</span>

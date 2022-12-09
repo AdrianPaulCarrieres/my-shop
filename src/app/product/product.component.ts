@@ -22,23 +22,7 @@ export class ProductComponent {
     this.hoveredEvent.emit(value);
   }
 
-  // add product to cart as an object of productId -> quantity
-
-  // add to cart
   addToCart(product: Product) {
-    let cart = [];
-    cart = JSON.parse(localStorage.getItem('cart') || `{ ${product.id} : ${0} }`);
-    let quantity = cart[product.id] || 0;
-    quantity += 1;
-
-    cart[product.id] = quantity;
-
-    console.table(cart);
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
-  addToCart2(product: Product) {
     let cart = [];
 
     cart = JSON.parse(localStorage.getItem('cart') || `[]`);
@@ -50,14 +34,12 @@ export class ProductComponent {
       item.name = product.name;
       item.quantity += 1;
       item.price = product.price;
-      item.total = item.quantity * item.price;
     } else {
       cart.push({
         id: product.id,
         name: product.name,
         quantity: 1,
         price: product.price,
-        total: product.price
       });
     }
 
@@ -66,35 +48,16 @@ export class ProductComponent {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 
-  removeFromCart2(product: Product) {
+  removeFromCart(product: Product) {
     let cart = [];
     cart = JSON.parse(localStorage.getItem('cart') || `[]`);
 
     let item = cart.find((item: any) => item.id === product.id);
     if (item) {
       item.quantity -= 1;
-      item.total = item.quantity * item.price;
       if (item.quantity <= 0) {
         cart = cart.filter((item: any) => item.id !== product.id);
       }
-    }
-
-    console.table(cart);
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
-  // remove from cart
-  removeFromCart(product: Product) {
-    let cart = [];
-    cart = JSON.parse(localStorage.getItem('cart') || `{ ${product.id} : ${0} }`);
-    let quantity = cart[product.id] || 0;
-    quantity -= 1;
-
-    if (quantity <= 0) {
-      delete cart[product.id]
-    } else {
-      cart[product.id] = quantity;
     }
 
     console.table(cart);
