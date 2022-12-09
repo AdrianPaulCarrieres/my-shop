@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 import { products } from '../products';
 
@@ -9,6 +9,16 @@ import { products } from '../products';
 })
 export class ProductListComponent {
   products = products;
+
+  hovered = "No component was hovered";
+
+  @Output() hoveredEvent = new EventEmitter<string>();
+
+  outputHovered(event: any) {
+    console.log("outputHovered");
+    this.hoveredEvent.emit(event);
+    this.hovered = "Latest hovered component: " + event;
+  }
 
   share() {
     window.alert('The product has been shared!');

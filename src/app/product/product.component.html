@@ -1,0 +1,18 @@
+<div (mouseenter)="hovered(product.name)">
+    <h3>
+        <a [title]="product.name + ' details'">
+            {{ product.name }}
+        </a>
+    </h3>
+
+    <img src="{{product.image}}" alt="{{product.name}}" />
+
+    <p *ngIf="product.description">
+        {{ product.description }}
+    </p>
+
+    <button (click)="addToCart(product)">Add to cart</button>
+
+    <button (click)="removeFromCart(product)">Remove from cart</button>
+</div>
+
