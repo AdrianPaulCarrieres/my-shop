@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   imports: [
@@ -14,13 +16,16 @@ import { ProductComponent } from './product/product.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: ProductListComponent },
+      { path: 'profile', component: ProfileComponent },
     ])
   ],
   declarations: [
     AppComponent,
     TopBarComponent,
     ProductListComponent,
-    ProductComponent
+    ProductComponent,
+    ProfileComponent,
+    CartComponent
   ],
   bootstrap: [
     AppComponent
