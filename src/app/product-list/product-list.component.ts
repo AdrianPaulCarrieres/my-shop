@@ -17,8 +17,6 @@ export class ProductListComponent {
   outputHovered(event: any) {
     event = JSON.parse(event);
 
-    console.table(event);
-
     if(event.flag) {
       this.hovering = "Hovering " + event.name;
     } else {

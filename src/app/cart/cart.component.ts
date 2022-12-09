@@ -13,8 +13,6 @@ export class CartComponent {
   total = this.calculateTotal(this.cart);
  
   constructor() {
-    //localStorage.setItem('cart', '[]');
-    console.table(this.cart);
    }
 
   ngOnInit(): void { }
@@ -23,8 +21,6 @@ export class CartComponent {
     let cart = [];
 
     cart = JSON.parse(localStorage.getItem('cart') || `[]`);
-
-    console.log(cart);
 
     let item = cart.find((item: any) => item.id === product.id);
     if (item) {
@@ -39,8 +35,6 @@ export class CartComponent {
         price: product.price,
       });
     }
-
-    console.table(cart);
 
     localStorage.setItem('cart', JSON.stringify(cart));
 
@@ -60,8 +54,6 @@ export class CartComponent {
         cart = cart.filter((item: any) => item.id !== product.id);
       }
     }
-
-    console.table(cart);
 
     localStorage.setItem('cart', JSON.stringify(cart));
 

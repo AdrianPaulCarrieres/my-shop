@@ -22,7 +22,6 @@ export class ProductComponent {
 
   hovering(name: string, flag: boolean) {
     let event = JSON.stringify({name: name, flag: flag});
-    console.log(event);
     this.hoveringEvent.emit(event);
 
     if(flag) {
@@ -36,8 +35,6 @@ export class ProductComponent {
     let cart = [];
 
     cart = JSON.parse(localStorage.getItem('cart') || `[]`);
-
-    console.log(cart);
 
     let item = cart.find((item: any) => item.id === product.id);
     if (item) {
@@ -53,8 +50,6 @@ export class ProductComponent {
       });
     }
 
-    console.table(cart);
-
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 
@@ -69,8 +64,6 @@ export class ProductComponent {
         cart = cart.filter((item: any) => item.id !== product.id);
       }
     }
-
-    console.table(cart);
 
     localStorage.setItem('cart', JSON.stringify(cart));
   }

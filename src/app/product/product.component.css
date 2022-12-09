@@ -1,12 +1,8 @@
 .buttonNotHovered{
-    padding-left: 20%;
-    padding-right: 20%;
     background-color: blue;
     color: white;
 }
 .buttonHovered{
-    padding-left: 20%;
-    padding-right: 20%;
     background-color: white;
     color: blue;
 }
