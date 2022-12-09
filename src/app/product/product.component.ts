@@ -22,8 +22,6 @@ export class ProductComponent {
     this.hoveredEvent.emit(value);
   }
 
-  // add a set of functions to add or remove product to cart in the localStorage
-  // add to cart
   addToCart(product: Product) {
     let cart = [];
     if (localStorage.getItem('cart') !== null) {
@@ -41,8 +39,13 @@ export class ProductComponent {
     let cart = [];
     if (localStorage.getItem('cart') !== null) {
       cart = JSON.parse(localStorage.getItem('cart') || '{}');
-      cart = cart.filter((p: Product) => p.id !== product.id);
+
+      const index = cart.indexOf(product);
+
+      cart.splice(index, 1);
     }
     localStorage.setItem('cart', JSON.stringify(cart));
+
+    console.table(cart);
   }
 }
